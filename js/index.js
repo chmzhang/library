@@ -3,15 +3,13 @@
  */
 
 $(function(){
+    //ajax加载
     function loadText(url,tab){
     $.ajax({
         url:url,
         type:'GET',
         data:{tab:tab},
         success:function(response,status,xhr){
-            //alert(response);
-          //  var jsonParse=$.parseJSON(response);
-           // alert(jsonParse);
             var jsonParse=response;
             var html='';
             for(var i=0;i<jsonParse.length;i++){
@@ -19,7 +17,6 @@ $(function(){
                 jsonParse[i].title+'</h3><div class="editor">'+jsonParse[i].content + '</div>'+
                     '<hr size="1" noshade="noshade"/>';
             }
-            //$('#tab1').append(html);
             switch (tab){
                 case 1:
                     $('#tab1').append(html);
@@ -39,6 +36,8 @@ $(function(){
     loadText('info1.json',1);
     loadText('info2.json',2);
     loadText('info3.json',3);
+
+    //检查是否存在cookie
     $('#member_a, #logout_a').hide();
     if($.cookie('user')){
         $('#member_a, #logout_a').show();
@@ -93,7 +92,7 @@ $(function(){
             '发布':function(){
                     $(this).ajaxSubmit({
                         url:'publish.php',
-                        type:'POST',
+                        type:'GET',
                         data:{
                             user: $.cookie('user')
                         },
@@ -140,7 +139,7 @@ $(function(){
         submitHandler:function(form){
             $(form).ajaxSubmit({
                 url : 'reg.php',
-                type : 'POST',
+                type : 'GET',
                 beforeSubmit : function(){
                     $('#loading').dialog('open');
                     $('#reg').dialog('widget').find('button').eq(1).button('disable');
@@ -221,15 +220,14 @@ $(function(){
             '取消':function(){
                 $(this).dialog('close');
                 $(this).resetForm();
-                //$(this).find('span.star').removeClass('succ').html('*');
                 $(this).find('.login_errors').html('');
             }
         }
     }).validate({
         submitHandler:function(form){
             $(form).ajaxSubmit({
-                url : 'http://chmzhang.github.io/library/login.php',
-                type : 'POST',
+                url : 'login.php',
+                type : 'GET',
                 beforeSubmit : function(){
                     $('#loading').dialog('open');
                     $('#login').dialog('widget').find('button').eq(1).button('disable');
@@ -244,7 +242,6 @@ $(function(){
                             $('#loading').css('background','url(img/loading.gif) no-repeat 20px center').html('数据提交中...');
                             $('#login').dialog('close');
                             $('#login').resetForm();
-                            //$('#login span.star').removeClass('succ').html('*');
                             $('#member_a, #logout_a').show();
                             $('#reg_a, #login_a').hide();
                             $('#member_a').html($.cookie('user'));
