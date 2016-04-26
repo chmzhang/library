@@ -49,7 +49,7 @@ $(function(){
     }
     $('#logout_a').click(function(){
         $.removeCookie('user');
-        window.location.href='/zhiwen/';
+        location.href='http://chmzhang.github.io/zhiwen/';
     });
 
     //按钮
