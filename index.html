@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文库</title>
+    <!--<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico"/>-->
+    <link rel="stylesheet" href="css/jquery-ui.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="js/jquery.form.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/index.js" charset="gbk"></script>
+</head>
+<body>
+<div id="header">
+    <div class="header_main">
+        <h1>文库</h1>
+        <div class="header_search">
+            <input type="text" name="search" class="search"/>
+        </div>
+        <div class="header_button">
+            <button id="search_button">查询</button>
+            <button id="publish_button">发布</button>
+        </div>
+        <div class="header_member">
+            <a href="javascript:" id="reg_a">注册</a><a href="javascript:" id="member_a">用户</a>
+            |
+            <a href="javascript:" id="login_a">登录</a><a href="javascript:" id="logout_a">退出</a>
+        </div>
+    </div>
+</div>
+<div id="main">
+    <div class="main_left">
+        <div id="tabs">
+            <ul>
+                <li><a href="#tab1">最新文章</a></li>
+                <li><a href="#tab2">最热文章</a></li>
+                <li><a href="#tab3">推荐文章</a></li>
+            </ul>
+            <div id="tab1"></div>
+            <div id="tab2"></div>
+            <div id="tab3"></div>
+        </div>
+    </div>
+    <div class="main_right">
+        <div id="accordion">
+            <h1>菜单1</h1>
+            <div><p>内容1-1</p><p>内容1-2</p><p>内容1-3</p></div>
+            <h1>菜单2</h1>
+            <div><p>内容2-1</p><p>内容2-2</p></div>
+            <h1>菜单3</h1>
+            <div><p>内容3-1</p></div>
+        </div>
+    </div>
+</div>
+<form id="publish" action="publish.php" method="post">
+    <p>
+        <label for="publish_title">文章标题：</label>
+        <input style="width: 350px;" type="text" name="publish_title" class="text" id="publish_title"/>
+    </p>
+    <p>
+        <label for="publish_content">文章内容：</label>
+        <textarea style="height: 200px;width: 350px;vertical-align: top;" name="publish_content" class="text"  id="publish_content">请输入正文</textarea>
+    </p>
+</form>
+<form action="reg.php" method="post" id="reg">
+    <ol class="reg_errors"></ol>
+    <p>
+        <label for="user">账号：</label>
+        <input type="text" name="user" class="text" id="user"/>
+        <span class="star">*</span>
+    </p>
+    <p>
+        <label for="pass">密码：</label>
+        <input type="password" name="pass" class="text" id="pass"/>
+        <span class="star">*</span>
+    </p>
+    <p>
+        <label for="email">邮箱：</label>
+        <input type="text" name="email" class="text" id="email"/>
+        <span class="star">*</span>
+    </p>
+    <p id="radio">
+        <label>性别：</label>
+        <input type="radio" name="sex" value="male" id="male" checked="checked"/><label for="male">男</label>
+        <input type="radio" name="sex" value="female" id="female"/><label for="female">女</label>
+    </p>
+</form>
+<div id="loading">数据提交中……</div>
+<form id="login" method="post" action="login.php">
+    <ol class="login_errors" id="login_errors"></ol>
+    <p>
+        <label for="login_user">账号：</label>
+        <input type="text" name="login_user" class="text" id="login_user"/>
+    </p>
+    <p>
+        <label for="login_pass">密码：</label>
+        <input type="password" name="login_pass" class="text" id="login_pass"/>
+    </p>
+</form>
+<footer class="footer clearFix">
+    <p class="profile">公司简介<span>|</span>招贤纳士<span>|</span>联系方式<span>|</span>版权声明<span>|</span>合作伙伴</p>
+    <p class="copyright">京 ICP 证 12345678 号<span>|</span>Copyright © 1999-2015, All Rights Reserved</p>
+</footer>
+</body>
+</html>
