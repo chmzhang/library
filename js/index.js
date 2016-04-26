@@ -6,7 +6,7 @@ $(function(){
     function loadText(tab){
     $.ajax({
         url:'show.php',
-        type:'POST',
+        type:'GET',
         data:{tab:tab},
         success:function(response,status,xhr){
             var jsonParse=$.parseJSON(response);
