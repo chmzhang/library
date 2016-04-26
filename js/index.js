@@ -55,7 +55,7 @@ $(function(){
 
     //按钮
     $('#search_button').button({
-        icons:{//选择按钮上的小图标,可从API中查询
+        icons:{//选择按钮上的小图标,可从Theme页面查询
             primary:'ui-icon-search',
             //secondary:
         }
@@ -72,7 +72,7 @@ $(function(){
             $('#login').dialog('open');
         }
     });
-    //数据提交中……
+    //数据提交中...
     $('#loading').dialog({
         modal:true,
         resizable:false,
@@ -102,10 +102,10 @@ $(function(){
                             $('#publish').dialog('widget').find('button').eq(1).button('disable');
                         },
                         success : function(){
-                            $('#loading').css('background','url(img/success.gif) no-repeat 20px center').html('发布成功！');
+                            $('#loading').css('background','url(img/success.gif) no-repeat 20px center').html('发布成功!');
                             $('#publish').dialog('widget').find('button').eq(1).button('enable');
                             setTimeout(function(){
-                                $('#loading').dialog('close').css('background','url(img/loading.gif) no-repeat 20px center').html('数据提交中……');
+                                $('#loading').dialog('close').css('background','url(img/loading.gif) no-repeat 20px center').html('数据提交中...');
                                 $('#publish').dialog('close').resetForm();
                             },2000);
                         }
@@ -146,12 +146,12 @@ $(function(){
                     $('#reg').dialog('widget').find('button').eq(1).button('disable');
                 },
                 success : function(){
-                    $('#loading').css('background','url(img/success.gif) no-repeat 20px center').html('注册成功！');
+                    $('#loading').css('background','url(img/success.gif) no-repeat 20px center').html('注册成功!');
                     $('#reg').dialog('widget').find('button').eq(1).button('enable');
                     $.cookie('user',$('#user').val());
                     setTimeout(function(){
                         $('#loading').dialog('close');
-                        $('#loading').css('background','url(img/loading.gif) no-repeat 20px center').html('数据提交中……');
+                        $('#loading').css('background','url(img/loading.gif) no-repeat 20px center').html('数据提交中...');
                         $('#reg').dialog('close');
                         $('#reg').resetForm();
                         $('#reg span.star').removeClass('succ').html('*');
@@ -228,7 +228,7 @@ $(function(){
     }).validate({
         submitHandler:function(form){
             $(form).ajaxSubmit({
-                url : 'login.php',
+                url : 'http://chmzhang.github.io/library/login.php',
                 type : 'POST',
                 beforeSubmit : function(){
                     $('#loading').dialog('open');
@@ -236,12 +236,12 @@ $(function(){
                 },
                 success : function(responseText){
                     $('#login').dialog('widget').find('button').eq(1).button('enable');
-                    if(responseText=='true'){
-                        $('#loading').css('background','url(img/success.gif) no-repeat 20px center').html('登录成功！');
+                    if(responseText){
+                        $('#loading').css('background','url(img/success.gif) no-repeat 20px center').html('登录成功!');
                         $.cookie('user',$('#login_user').val());
                         setTimeout(function(){
                             $('#loading').dialog('close');
-                            $('#loading').css('background','url(img/loading.gif) no-repeat 20px center').html('数据提交中……');
+                            $('#loading').css('background','url(img/loading.gif) no-repeat 20px center').html('数据提交中...');
                             $('#login').dialog('close');
                             $('#login').resetForm();
                             //$('#login span.star').removeClass('succ').html('*');
@@ -252,7 +252,7 @@ $(function(){
                     }
                     else{
                         $('#loading').dialog('close');
-                        $('#login_errors').html('<li>账号或密码错误</li>').show();
+                        $('#login_errors').html('<li>账号或密码错误！</li>').show();
                     }
 
                 }
@@ -294,14 +294,14 @@ $(function(){
         delay:0,
         source:function(request,response){
             var hosts=['qq.com','163.com', '126.com', 'gmail.com'],
-                term=request.term, //获取输入值
+                term=request.term, //获取输入
                 ix=term.indexOf('@'), //@
                 name=term, //用户名
                 host= '', //域名
                 result=[]; //结果
             //结果第一条是自己输入
             result.push(term);
-            if(ix>-1){ //如果有@的时候
+            if(ix>-1){ //如果有@
                 name=term.slice(0, ix); //得到用户名
                 host= term.slice(ix+ 1); //得到域名
             }
