@@ -15,7 +15,7 @@ $(function(){
             var jsonParse=response;
             var html='';
             for(var i=0;i<jsonParse.length;i++){
-                html+='<h4>'+jsonParse[i].user+' ·¢±íÓÚ '+jsonParse[i].date+'</h4><h3>' +
+                html+='<h4>'+jsonParse[i].user+' å‘è¡¨äº '+jsonParse[i].date+'</h4><h3>' +
                 jsonParse[i].title+'</h3><div class="editor">'+jsonParse[i].content + '</div>'+
                     '<hr size="1" noshade="noshade"/>';
             }
@@ -53,9 +53,9 @@ $(function(){
         window.location.href='/zhiwen/';
     });
 
-    //°´Å¥
+    //æŒ‰é’®
     $('#search_button').button({
-        icons:{//Ñ¡Ôñ°´Å¥ÉÏµÄĞ¡Í¼±ê,¿É´ÓAPIÖĞ²éÑ¯
+        icons:{//é€‰æ‹©æŒ‰é’®ä¸Šçš„å°å›¾æ ‡,å¯ä»APIä¸­æŸ¥è¯¢
             primary:'ui-icon-search',
             //secondary:
         }
@@ -72,25 +72,25 @@ $(function(){
             $('#login').dialog('open');
         }
     });
-    //Êı¾İÌá½»ÖĞ¡­¡­
+    //æ•°æ®æäº¤ä¸­â€¦â€¦
     $('#loading').dialog({
         modal:true,
         resizable:false,
         draggable:false,
-        closeOnEscape:false,//°´Esc¼ü²»ÍË³ö
+        closeOnEscape:false,//æŒ‰Escé”®ä¸é€€å‡º
         width:180,
         height:50,
         autoOpen:false
     }).parent().find('.ui-widget-header').hide();
-    //¶Ô»°¿ò
+    //å¯¹è¯æ¡†
     $('#publish').dialog({
         autoOpen:false,
         modal:true,
         width:500,
         resizable:false,
-        title:'·¢²¼¶ÌÎÄ',
+        title:'å‘å¸ƒçŸ­æ–‡',
         buttons:{
-            '·¢²¼':function(){
+            'å‘å¸ƒ':function(){
                     $(this).ajaxSubmit({
                         url:'publish.php',
                         type:'POST',
@@ -102,34 +102,34 @@ $(function(){
                             $('#publish').dialog('widget').find('button').eq(1).button('disable');
                         },
                         success : function(){
-                            $('#loading').css('background','url(img/success.gif) no-repeat 20px center').html('·¢²¼³É¹¦£¡');
+                            $('#loading').css('background','url(img/success.gif) no-repeat 20px center').html('å‘å¸ƒæˆåŠŸï¼');
                             $('#publish').dialog('widget').find('button').eq(1).button('enable');
                             setTimeout(function(){
-                                $('#loading').dialog('close').css('background','url(img/loading.gif) no-repeat 20px center').html('Êı¾İÌá½»ÖĞ¡­¡­');
+                                $('#loading').dialog('close').css('background','url(img/loading.gif) no-repeat 20px center').html('æ•°æ®æäº¤ä¸­â€¦â€¦');
                                 $('#publish').dialog('close').resetForm();
                             },2000);
                         }
                     });
             },
-            'È¡Ïû':function(){
+            'å–æ¶ˆ':function(){
                 $(this).dialog('close');
                 $(this).resetForm();
             }
         }
     });
 
-    //×¢²á
+    //æ³¨å†Œ
     $('#reg').dialog({
         autoOpen:false,
         modal:true,
         width:320,
         resizable:false,
-        title:'×¢²á',
+        title:'æ³¨å†Œ',
         buttons:{
-            'Ìá½»':function(){
+            'æäº¤':function(){
                 $(this).submit();
             },
-            'È¡Ïû':function(){
+            'å–æ¶ˆ':function(){
                 $(this).dialog('close');
                 $(this).resetForm();
                 $(this).find('span.star').removeClass('succ').html('*');
@@ -146,12 +146,12 @@ $(function(){
                     $('#reg').dialog('widget').find('button').eq(1).button('disable');
                 },
                 success : function(){
-                    $('#loading').css('background','url(img/success.gif) no-repeat 20px center').html('×¢²á³É¹¦£¡');
+                    $('#loading').css('background','url(img/success.gif) no-repeat 20px center').html('æ³¨å†ŒæˆåŠŸï¼');
                     $('#reg').dialog('widget').find('button').eq(1).button('enable');
                     $.cookie('user',$('#user').val());
                     setTimeout(function(){
                         $('#loading').dialog('close');
-                        $('#loading').css('background','url(img/loading.gif) no-repeat 20px center').html('Êı¾İÌá½»ÖĞ¡­¡­');
+                        $('#loading').css('background','url(img/loading.gif) no-repeat 20px center').html('æ•°æ®æäº¤ä¸­â€¦â€¦');
                         $('#reg').dialog('close');
                         $('#reg').resetForm();
                         $('#reg span.star').removeClass('succ').html('*');
@@ -191,34 +191,34 @@ $(function(){
         },
         messages:{
             user:{
-                required:'ÕËºÅ²»µÃÎª¿Õ',
-                minlength:jQuery.format('ÕËºÅ²»µÃĞ¡ÓÚ{0}Î»')
+                required:'è´¦å·ä¸å¾—ä¸ºç©º',
+                minlength:jQuery.format('è´¦å·ä¸å¾—å°äº{0}ä½')
             },
             pass:{
-                required:'ÃÜÂë²»µÃÎª¿Õ',
-                minlength:jQuery.format('ÃÜÂë²»µÃĞ¡ÓÚ{0}Î»')
+                required:'å¯†ç ä¸å¾—ä¸ºç©º',
+                minlength:jQuery.format('å¯†ç ä¸å¾—å°äº{0}ä½')
             },
             email:{
-                required:'ÓÊÏä²»µÃÎª¿Õ',
-                email:'ÇëÊäÈëÕıÈ·µÄÓÊÏäµØÖ·'
+                required:'é‚®ç®±ä¸å¾—ä¸ºç©º',
+                email:'è¯·è¾“å…¥æ­£ç¡®çš„é‚®ç®±åœ°å€'
             }
         }
     });
     $('#reg_a').click(function(){
         $('#reg').dialog('open');
     });
-    //µÇÂ¼
+    //ç™»å½•
     $('#login').dialog({
         autoOpen:false,
         modal:true,
         width:320,
         resizable:false,
-        title:'µÇÂ¼',
+        title:'ç™»å½•',
         buttons:{
-            'µÇÂ¼':function(){
+            'ç™»å½•':function(){
                 $(this).submit();
             },
-            'È¡Ïû':function(){
+            'å–æ¶ˆ':function(){
                 $(this).dialog('close');
                 $(this).resetForm();
                 //$(this).find('span.star').removeClass('succ').html('*');
@@ -237,11 +237,11 @@ $(function(){
                 success : function(responseText){
                     $('#login').dialog('widget').find('button').eq(1).button('enable');
                     if(responseText=='true'){
-                        $('#loading').css('background','url(img/success.gif) no-repeat 20px center').html('µÇÂ¼³É¹¦£¡');
+                        $('#loading').css('background','url(img/success.gif) no-repeat 20px center').html('ç™»å½•æˆåŠŸï¼');
                         $.cookie('user',$('#login_user').val());
                         setTimeout(function(){
                             $('#loading').dialog('close');
-                            $('#loading').css('background','url(img/loading.gif) no-repeat 20px center').html('Êı¾İÌá½»ÖĞ¡­¡­');
+                            $('#loading').css('background','url(img/loading.gif) no-repeat 20px center').html('æ•°æ®æäº¤ä¸­â€¦â€¦');
                             $('#login').dialog('close');
                             $('#login').resetForm();
                             //$('#login span.star').removeClass('succ').html('*');
@@ -252,7 +252,7 @@ $(function(){
                     }
                     else{
                         $('#loading').dialog('close');
-                        $('#login_errors').html('<li>ÕËºÅ»òÃÜÂë´íÎó</li>').show();
+                        $('#login_errors').html('<li>è´¦å·æˆ–å¯†ç é”™è¯¯</li>').show();
                     }
 
                 }
@@ -275,53 +275,53 @@ $(function(){
         },
         messages:{
             login_user:{
-                required:'ÕËºÅ²»µÃÎª¿Õ'
+                required:'è´¦å·ä¸å¾—ä¸ºç©º'
             },
             login_pass:{
-                required:'ÃÜÂë²»µÃÎª¿Õ'
+                required:'å¯†ç ä¸å¾—ä¸ºç©º'
             }
         }
     });
     $('#login_a').click(function(){
         $('#login').dialog('open');
     });
-    //°´Å¥×é
+    //æŒ‰é’®ç»„
     $('#radio').buttonset();
 
-    //×Ô¶¯²¹È«
+    //è‡ªåŠ¨è¡¥å…¨
     $('#email').autocomplete({
         autoFocus:true,
         delay:0,
         source:function(request,response){
             var hosts=['qq.com','163.com', '126.com', 'gmail.com'],
-                term=request.term, //»ñÈ¡ÊäÈëÖµ
+                term=request.term, //è·å–è¾“å…¥å€¼
                 ix=term.indexOf('@'), //@
-                name=term, //ÓÃ»§Ãû
-                host= '', //ÓòÃû
-                result=[]; //½á¹û
-            //½á¹ûµÚÒ»ÌõÊÇ×Ô¼ºÊäÈë
+                name=term, //ç”¨æˆ·å
+                host= '', //åŸŸå
+                result=[]; //ç»“æœ
+            //ç»“æœç¬¬ä¸€æ¡æ˜¯è‡ªå·±è¾“å…¥
             result.push(term);
-            if(ix>-1){ //Èç¹ûÓĞ@µÄÊ±ºò
-                name=term.slice(0, ix); //µÃµ½ÓÃ»§Ãû
-                host= term.slice(ix+ 1); //µÃµ½ÓòÃû
+            if(ix>-1){ //å¦‚æœæœ‰@çš„æ—¶å€™
+                name=term.slice(0, ix); //å¾—åˆ°ç”¨æˆ·å
+                host= term.slice(ix+ 1); //å¾—åˆ°åŸŸå
             }
             if(name) {
-                //µÃµ½ÕÒµ½µÄÓòÃû
+                //å¾—åˆ°æ‰¾åˆ°çš„åŸŸå
                 var findedHosts= (host?$.grep(hosts,function(value,index){
                         return value.indexOf(host) >-1;
-                    }):hosts), //×îÖÕÁĞ±íµÄÓÊÏä
+                    }):hosts), //æœ€ç»ˆåˆ—è¡¨çš„é‚®ç®±
                     findedResults=$.map(findedHosts,function(value,index){
                         return name +'@'+value;
                     });
-                //Ôö¼ÓÒ»¸ö×ÔÎÒÊäÈë
+                //å¢åŠ ä¸€ä¸ªè‡ªæˆ‘è¾“å…¥
                 result=result.concat(findedResults);
             }
             response(result);
         }
     });
-    //±êÇ©ÇĞ»»
+    //æ ‡ç­¾åˆ‡æ¢
     $('#tabs').tabs();
-    //ÕÛµş²Ëµ¥
+    //æŠ˜å èœå•
     $('#accordion').accordion({
         collapsible:true,
         heightStyle:'content'
