@@ -3,19 +3,23 @@
  */
 
 $(function(){
-    function loadText(tab){
+    function loadText(url,tab){
     $.ajax({
-        url:'show.php',
+        url:url,
         type:'GET',
         data:{tab:tab},
         success:function(response,status,xhr){
-            var jsonParse=$.parseJSON(response);
+            //alert(response);
+          //  var jsonParse=$.parseJSON(response);
+           // alert(jsonParse);
+            var jsonParse=response;
             var html='';
             for(var i=0;i<jsonParse.length;i++){
                 html+='<h4>'+jsonParse[i].user+' ·¢±íÓÚ '+jsonParse[i].date+'</h4><h3>' +
                 jsonParse[i].title+'</h3><div class="editor">'+jsonParse[i].content + '</div>'+
                     '<hr size="1" noshade="noshade"/>';
             }
+            //$('#tab1').append(html);
             switch (tab){
                 case 1:
                     $('#tab1').append(html);
@@ -32,9 +36,9 @@ $(function(){
         }
     });
     }
-    loadText(1);
-    loadText(2);
-    loadText(3);
+    loadText('info1.json',1);
+    loadText('info2.json',2);
+    loadText('info3.json',3);
     $('#member_a, #logout_a').hide();
     if($.cookie('user')){
         $('#member_a, #logout_a').show();
